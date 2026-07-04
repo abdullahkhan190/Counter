@@ -26,8 +26,9 @@
             transition:box-shadow .15s ease, border-color .15s ease;
         }
         #count:focus{outline:none; border-color:#3b82f6; box-shadow:0 6px 20px rgba(59,130,246,0.12)}
+        .row{display:flex; align-items:center; gap:10px}
         #go{
-            margin-left:10px;
+            margin-left:0;
             padding:10px 14px;
             font-weight:600;
             background:#3b82f6;
@@ -37,14 +38,24 @@
             cursor:pointer;
         }
         #go:hover{filter:brightness(.95)}
-        #result{margin-top:12px; color:#111827; font-size:15px}
+        .result-card{margin-top:12px; color:#111827; font-size:15px; width:380px; max-width:90vw; padding:12px 14px; border-radius:10px; background:linear-gradient(180deg,#ffffff,#fbfdff); box-shadow:0 6px 18px rgba(2,6,23,0.06); display:flex; flex-direction:column; gap:6px}
+        .result-card .label{font-size:12px; color:#6b7280}
+        .result-card .value{font-size:20px; font-weight:700; color:#0f172a}
+        .result-card.show{animation:fadeIn .18s ease both}
+        @keyframes fadeIn{from{opacity:0; transform:translateY(-6px)} to{opacity:1; transform:none}}
     </style>
 </head>
 <body>
-    <input type="text" id="count">
-
-    <button id="go">GO</button>
-    <p id="result"></p>
+    <div class="controls">
+        <div class="row">
+            <input type="text" id="count">
+            <button id="go">GO</button>
+        </div>
+        <div id="result" class="result-card" role="status" aria-live="polite" aria-atomic="true" hidden>
+            <div class="label">Humidity</div>
+            <div class="value">—</div>
+        </div>
+    </div>
 </body>
 <script>
 
@@ -66,7 +77,15 @@
         // let temp = current_condition[0].temp_C;
         // console.log(data);
         // console.log(current_condition[0].humidity);
-        document.getElementById("result").innerHTML = current_condition[0].humidity;
+        const resultEl = document.getElementById('result');
+        const valueEl = resultEl.querySelector('.value');
+        valueEl.textContent = current_condition[0].humidity + '%';
+        resultEl.hidden = false;
+        // trigger animation
+        resultEl.classList.remove('show');
+        // force reflow then add
+        void resultEl.offsetWidth;
+        resultEl.classList.add('show');
     })
     
 </script>
