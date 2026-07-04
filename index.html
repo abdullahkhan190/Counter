@@ -4,6 +4,41 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        /* Simple visual improvements */
+        body{
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+            background: linear-gradient(180deg,#f8fafc,#eef2ff);
+            padding: 36px;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+        }
+        #count{
+            width:380px;
+            max-width:90vw;
+            padding:12px 14px;
+            font-size:16px;
+            border-radius:8px;
+            border:1px solid #d1d5db;
+            background:#fff;
+            box-shadow:0 2px 6px rgba(15,23,42,0.04);
+            transition:box-shadow .15s ease, border-color .15s ease;
+        }
+        #count:focus{outline:none; border-color:#3b82f6; box-shadow:0 6px 20px rgba(59,130,246,0.12)}
+        #go{
+            margin-left:10px;
+            padding:10px 14px;
+            font-weight:600;
+            background:#3b82f6;
+            color:#fff;
+            border:0;
+            border-radius:8px;
+            cursor:pointer;
+        }
+        #go:hover{filter:brightness(.95)}
+        #result{margin-top:12px; color:#111827; font-size:15px}
+    </style>
 </head>
 <body>
     <input type="text" id="count">
