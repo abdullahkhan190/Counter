@@ -6,15 +6,27 @@
     <title>Document</title>
 </head>
 <body>
-    <p id = "count"></p>
-    <button id="plus">+</button>
+    <input type="text" id="count">
+
+    <button id="go">GO</button>
+    <p id="result"></p>
 </body>
 <script>
-    const count = document.getElementById("count");
-    count.innerHTML = 10;
-    const plus = document.getElementById("plus");
-    plus.addEventListener("click", () => {
-        count.innerHTML = parseInt(count.innerHTML) + 1;
-    });
+
+    console.log(count.innerHTML);
+    document.getElementById("go").addEventListener("click", async () => {
+        var text = document.getElementById("count").value;
+        console.log(text);
+        let data = [{name:"Abdullah",city:"Ajmer"},{name:"Aleem",city:"Oshowa"}]
+        // let {name} = data[0];
+        
+        console.log(data[0].name);
+        // let res = await fetch(`https://wttr.in/${text}?format=j1`);
+        // let data = await res.json();
+        // let { current_condition, nearest_area } = data;
+        // let temp = current_condition[0].temp_C;
+        // console.log(temp);
+    })
+    
 </script>
 </html>
