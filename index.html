@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id = "count"></p>
+    <button id="plus">+</button>
+</body>
+<script>
+    const count = document.getElementById("count");
+    count.innerHTML = 10;
+    const plus = document.getElementById("plus");
+    plus.addEventListener("click", () => {
+        count.innerHTML = parseInt(count.innerHTML) + 1;
+    });
+</script>
+</html>
